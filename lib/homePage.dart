@@ -10,6 +10,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+/*
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           decoration: BoxDecoration(
               image : DecorationImage(
-                  image:AssetImage('images/home.png'),
+                image:AssetImage('images/home.png'),
                 centerSlice: Rect.fromLTRB(0, 0, 0, 0),//TODO:
               )
           ),
@@ -34,6 +35,26 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: null,
         child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+*/
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: BoxConstraints.expand(
+          width: window.physicalSize.width, height: window.physicalSize.height),
+      alignment: Alignment.center,
+//      padding: EdgeInsets.only(left: 0.0, bottom: 0.0),
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('images/home.png'), fit: BoxFit.fill)),
+      child: Text(
+        'Title',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
       ),
     );
   }
