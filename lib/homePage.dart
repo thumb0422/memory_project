@@ -3,6 +3,8 @@
 **/
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'rangButton.dart';
+import 'model.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -52,10 +54,26 @@ class _HomePageState extends State<HomePage> {
       decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('images/home.png'), fit: BoxFit.fill)),
-      child: Text(
-        'Title',
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-      ),
+      child: Container(
+        margin: EdgeInsets.fromLTRB(10, window.physicalSize.height/2.0 - 600, 10, 40),
+//        color: Colors.red,
+        child: Wrap(
+          alignment: WrapAlignment.start,
+          children: <Widget>[
+//            RangButton(Model(typeId: '001',typeName: '测试A',desc: '我1')),
+            RangButton(title:'测试A'),
+            RangButton(title:'测试B'),
+            RangButton(title:'测试C'),
+            RangButton(title:'测试D'),
+            RangButton(title:'测试E'),
+            RangButton(title:'测试F'),
+            RangButton(title:'测试G'),
+            RangButton(title:'测试H'),
+            RangButton(title:'测试J'),
+            RangButton(title:'测试K'),
+          ],
+        ),
+      )
     );
   }
 }
