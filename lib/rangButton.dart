@@ -74,6 +74,13 @@ class RangButton extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(30)),
         )
       ),
+      child: GestureDetector(
+        onTap:(){
+          print(this.title);
+        },
+      ),
     );
   }
 }
+
+
