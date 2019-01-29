@@ -72,7 +72,7 @@ class RangButton extends StatelessWidget {
               width: 0.5,
               style: BorderStyle.solid,
             ),
-            borderRadius: BorderRadius.all(Radius.circular(30)),
+            borderRadius: BorderRadius.all(Radius.circular(20)),
           )),
       child: GestureDetector(
         onTap: onTouchUpInside,
@@ -90,6 +90,5 @@ class RangButton extends StatelessWidget {
     var imageNameTmp = data.imgName;
     imageNameTmp = "images/${imageNameTmp}";
     this.imageName = imageNameTmp;
-    print(this.imageName);
   }
 }

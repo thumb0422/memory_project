@@ -55,8 +55,9 @@ class _HomePageState extends State<HomePage> {
           image: DecorationImage(
               image: AssetImage('images/home.png'), fit: BoxFit.fill)),
       child: Container(
-        height: 400,
-        margin: EdgeInsets.only(bottom: 20),
+//        height: 400,
+//        margin: EdgeInsets.only(bottom: 0.1),
+//        padding: EdgeInsets.only(bottom: 10),
         child: Wrap(
           spacing: 15,
           runSpacing: 10,
