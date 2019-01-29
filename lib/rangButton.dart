@@ -6,16 +6,16 @@ import 'package:flutter/widgets.dart';
 import 'model.dart';
 
 class RangButton extends StatelessWidget {
-  RangButton(
-      {
-//    this.data,
-      this.title});
+  RangButton({
+    this.data,
+  });
 
-//  final Model data;
-  final String title;
+  Model data;
+  String imageName;
 
   @override
   Widget build(BuildContext context) {
+    onInitData();
     /*
     return MaterialButton(
       shape: RoundedRectangleBorder(
@@ -61,26 +61,35 @@ class RangButton extends StatelessWidget {
     */
 
     return Container(
-      width: 120,
-      height: 90,
+      width: 100,
+      height: 64,
       decoration: ShapeDecoration(
-        image: DecorationImage(image: AssetImage('images/gouwu.png'),fit: BoxFit.fill),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-            color: Colors.deepPurple,
-            width: 1.0,
-            style: BorderStyle.solid,
-          ),
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-        )
-      ),
+          image: DecorationImage(
+              image: AssetImage(this.imageName), fit: BoxFit.fill),
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: Colors.deepPurple,
+              width: 0.5,
+              style: BorderStyle.solid,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+          )),
       child: GestureDetector(
-        onTap:(){
-          print(this.title);
-        },
+        onTap: onTouchUpInside,
       ),
     );
   }
+
+  onTouchUpInside() {
+    var str = this.data.typeName;
+    var str1 = "onTouchUpInside ：${str}";
+    print(str1);
+  }
+
+  onInitData() {
+    var imageNameTmp = data.imgName;
+    imageNameTmp = "images/${imageNameTmp}";
+    this.imageName = imageNameTmp;
+    print(this.imageName);
+  }
 }
-
-
