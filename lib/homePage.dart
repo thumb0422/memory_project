@@ -46,34 +46,41 @@ class _HomePageState extends State<HomePage> {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: BoxConstraints.expand(
-          width: window.physicalSize.width, height: window.physicalSize.height),
-      alignment: Alignment.center,
-//      padding: EdgeInsets.only(left: 0.0, bottom: 0.0),
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('images/home.png'), fit: BoxFit.fill)),
-      child: Container(
-//        height: 400,
-//        margin: EdgeInsets.only(bottom: 0.1),
-//        padding: EdgeInsets.only(bottom: 10),
-        child: Wrap(
-          spacing: 15,
-          runSpacing: 10,
-          alignment: WrapAlignment.start,
-          children: <Widget>[
-            RangButton(data:Model('0001', '理财', 'licai.png','')),
-            RangButton(data:Model('0002', '社交', 'shejiao.png','')),
-            RangButton(data:Model('0003', '支付', 'zhifu.png','')),
-            RangButton(data:Model('0004', '工作', 'work.png','')),
-            RangButton(data:Model('0005', '邮箱', 'youxiang.png','')),
-            RangButton(data:Model('0006', '购物', 'gouwu.png','')),
-            RangButton(data:Model('0007', '游戏', 'youxi.png','')),
-            RangButton(data:Model('0008', '其他', 'other.png','')),
-          ],
-        ),
-      )
+    return Scaffold(
+      body: Container(
+          constraints: BoxConstraints.expand(
+              width: window.physicalSize.width,
+              height: window.physicalSize.height),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('images/home.png'), fit: BoxFit.fill)),
+          child: Container(
+            child: Wrap(
+              spacing: 15,
+              runSpacing: 10,
+              alignment: WrapAlignment.start,
+              children: <Widget>[
+                RangButton(data: Model('0001', '理财', 'licai.png', '')),
+                RangButton(data: Model('0002', '社交', 'shejiao.png', '')),
+                RangButton(data: Model('0003', '支付', 'zhifu.png', '')),
+                RangButton(data: Model('0004', '工作', 'work.png', '')),
+                RangButton(data: Model('0005', '邮箱', 'youxiang.png', '')),
+                RangButton(data: Model('0006', '购物', 'gouwu.png', '')),
+                RangButton(data: Model('0007', '游戏', 'youxi.png', '')),
+                RangButton(data: Model('0008', '其他', 'other.png', '')),
+              ],
+            ),
+          )),
+      floatingActionButton: FloatingActionButton(
+        onPressed: addAction,
+        child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
+
+  addAction(){
+    print('-----');
+}
 }
