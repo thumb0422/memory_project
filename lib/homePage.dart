@@ -55,9 +55,12 @@ class _HomePageState extends State<HomePage> {
           image: DecorationImage(
               image: AssetImage('images/home.png'), fit: BoxFit.fill)),
       child: Container(
-        margin: EdgeInsets.fromLTRB(10, window.physicalSize.height/2.0 - 600, 10, 40),
+        height: 400,
+        margin: EdgeInsets.only(bottom: 20),
 //        color: Colors.red,
         child: Wrap(
+          spacing: 15,
+          runSpacing: 10,
           alignment: WrapAlignment.start,
           children: <Widget>[
 //            RangButton(Model(typeId: '001',typeName: '测试A',desc: '我1')),
