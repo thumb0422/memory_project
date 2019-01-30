@@ -3,8 +3,9 @@
 **/
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'rangButton.dart';
-import 'model.dart';
+import '../view/rangButton.dart';
+import 'package:memory_project/model/model.dart';
+import 'package:memory_project/page/addPage.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -81,6 +82,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   addAction(){
-    print('-----');
+    Navigator.push(context, MaterialPageRoute(builder: (context) =>AddPage()));
 }
 }

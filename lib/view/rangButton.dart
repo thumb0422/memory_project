@@ -3,7 +3,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'model.dart';
+import 'package:memory_project/model/model.dart';
 
 class RangButton extends StatelessWidget {
   RangButton({
