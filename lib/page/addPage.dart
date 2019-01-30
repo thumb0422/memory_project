@@ -20,6 +20,7 @@ class AddPage extends StatelessWidget {
           children: <Widget>[
             Row(
               children: <Widget>[
+                /*
                 Container(
                   width: 70.0,
                   height: 50.0,
@@ -38,6 +39,36 @@ class AddPage extends StatelessWidget {
                   child: MyDropdownButton(
                       //TODO:
                       ),
+                )
+                */
+                Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(left: 10),
+                    ),
+                    Image(
+                      image: AssetImage('images/about.png'),
+                      fit: BoxFit.fill,
+                      width: 20,
+                      height: 20,
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(left: 10),
+                    ),
+                    Text(
+                      '类型：',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 17.0,
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(left: 10),
+                    ),
+                    MyDropdownButton(
+
+                    )
+                  ],
                 )
               ],
             ),
@@ -93,15 +124,40 @@ class AddPage extends StatelessWidget {
                 )
               ],
             ),
-            MaterialButton(
-              onPressed: onSaveClick(),
-              child: Text('保       存'),
-            )
+            Row(children: <Widget>[
+//                Container(
+//                  padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
+//
+//                ),
+              FlatButton(
+                padding: EdgeInsets.only(left: 0, right: 0),
+                color: Colors.red,
+                textColor: Colors.blue,
+                highlightColor: Colors.blue[700],
+                colorBrightness: Brightness.dark,
+                splashColor: Colors.grey,
+                child: Text(
+                  "保存",
+                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.ltr,
+                  style: TextStyle(
+                    color: Colors.deepPurple,
+                    fontSize: 20.0,
+                    letterSpacing: 150,
+                  ),
+                ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
+                onPressed: onSaveClick(),
+              )
+            ])
           ],
         ),
       ),
     );
   }
 
-  onSaveClick() {}
+  onSaveClick() {
+    print('1231232');
+  }
 }
