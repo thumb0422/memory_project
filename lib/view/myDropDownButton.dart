@@ -70,10 +70,10 @@ class _MyDropdownButton extends State<MyDropdownButton> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        new Center(
-          child: new DropdownButton(
+        Center(
+          child: DropdownButton(
             items: getListData(),
-            hint: new Text('选择类型'), //当没有默认值的时候可以设置的提示
+            hint: Text('选择类型'), //当没有默认值的时候可以设置的提示
             value: value, //下拉菜单选择完之后显示给用户的值
             onChanged: (T) {
               //下拉菜单item点击之后的回调
@@ -82,8 +82,8 @@ class _MyDropdownButton extends State<MyDropdownButton> {
               });
             },
             elevation: 24, //设置阴影的高度
-            style: new TextStyle(
-              //设置文本框里面文字的样式
+            style: TextStyle(
+                //设置文本框里面文字的样式
                 color: Colors.black),
 //              isDense: false,//减少按钮的高度。默认情况下，此按钮的高度与其菜单项的高度相同。如果isDense为true，则按钮的高度减少约一半。 这个当按钮嵌入添加的容器中时，非常有用
             iconSize: 20.0, //设置三角标icon的大小

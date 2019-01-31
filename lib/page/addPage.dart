@@ -14,62 +14,35 @@ class AddPage extends StatelessWidget {
         title: Text('新增记忆仓库'),
       ),
       body: Container(
-        padding: const EdgeInsets.only(top: 42.0),
+        padding: const EdgeInsets.only(top: 15.0),
         alignment: Alignment.centerLeft,
         child: Column(
           children: <Widget>[
             Row(
               children: <Widget>[
-                /*
                 Container(
-                  width: 70.0,
-                  height: 50.0,
-                  margin: const EdgeInsets.only(left: 20.0),
-                  child: Text(
-                    '类型：',
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 17.0,
-                    ),
+                  padding: EdgeInsets.only(left: 15),
+                ),
+                Image(
+                  image: AssetImage('images/about.png'),
+                  fit: BoxFit.fill,
+                  width: 20,
+                  height: 20,
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 10),
+                ),
+                Text(
+                  '类型：',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 16.0,
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(left: 5.0, right: 15.0),
-                  height: 48.0,
-                  child: MyDropdownButton(
-                      //TODO:
-                      ),
-                )
-                */
-                Row(
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(left: 10),
-                    ),
-                    Image(
-                      image: AssetImage('images/about.png'),
-                      fit: BoxFit.fill,
-                      width: 20,
-                      height: 20,
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(left: 10),
-                    ),
-                    Text(
-                      '类型：',
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 17.0,
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(left: 10),
-                    ),
-                    MyDropdownButton(
-
-                    )
-                  ],
-                )
+                  padding: EdgeInsets.only(left: 10),
+                ),
+                MyDropdownButton()
               ],
             ),
             Row(
@@ -125,31 +98,32 @@ class AddPage extends StatelessWidget {
               ],
             ),
             Row(children: <Widget>[
-//                Container(
-//                  padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
-//
-//                ),
-              FlatButton(
-                padding: EdgeInsets.only(left: 0, right: 0),
-                color: Colors.red,
-                textColor: Colors.blue,
-                highlightColor: Colors.blue[700],
-                colorBrightness: Brightness.dark,
-                splashColor: Colors.grey,
-                child: Text(
-                  "保存",
-                  textAlign: TextAlign.center,
-                  textDirection: TextDirection.ltr,
-                  style: TextStyle(
-                    color: Colors.deepPurple,
-                    fontSize: 20.0,
-                    letterSpacing: 150,
+              Container(
+                padding: EdgeInsets.only(left: 20,top: 100),
+              ),
+              Expanded(
+                flex: 1,
+                child: RaisedButton(
+                  onPressed: () {
+                    onSaveClick();
+                  },
+                  color: const Color(0xfff1c232),
+                  child: new Text(
+                    '保存',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.deepPurple,
+                      fontSize: 20.0,
+                      letterSpacing: 100,
+                    ),
                   ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
                 ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                onPressed: onSaveClick(),
-              )
+              ),
+              Container(
+                padding: EdgeInsets.only(right: 20),
+              ),
             ])
           ],
         ),
