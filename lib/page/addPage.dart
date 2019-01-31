@@ -7,6 +7,18 @@ import '../view/myDropDownButton.dart';
 class AddPage extends StatelessWidget {
   var value;
 
+  _onSaveClick(BuildContext context) {
+    return showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context){
+          return AlertDialog(
+            title: Text('保存成功'),
+          );
+        }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,6 +88,7 @@ class AddPage extends StatelessWidget {
                 Flexible(
                   child: TextField(
                     autofocus: true,
+                    keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                         labelText: "密码",
                         hintText: "请输入密码",
@@ -99,13 +112,13 @@ class AddPage extends StatelessWidget {
             ),
             Row(children: <Widget>[
               Container(
-                padding: EdgeInsets.only(left: 20,top: 100),
+                padding: EdgeInsets.only(left: 20, top: 100),
               ),
               Expanded(
                 flex: 1,
                 child: RaisedButton(
                   onPressed: () {
-                    onSaveClick();
+                    _onSaveClick(context);
                   },
                   color: const Color(0xfff1c232),
                   child: new Text(
@@ -129,9 +142,5 @@ class AddPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  onSaveClick() {
-    print('1231232');
   }
 }
