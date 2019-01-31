@@ -4,45 +4,15 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import '../view/rangButton.dart';
-import 'package:memory_project/model/model.dart';
-import 'package:memory_project/page/addPage.dart';
+import '../model/model.dart';
+import '../page/addPage.dart';
+import '../page/loginPage.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
-
-/*
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.yellow,
-//      body: Center(
-//        child: Image.asset('images/home.png',
-//            fit: BoxFit.fill,
-//            width: window.physicalSize.width,
-//            height: window.physicalSize.height),
-//      ),
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-              image : DecorationImage(
-                image:AssetImage('images/home.png'),
-                centerSlice: Rect.fromLTRB(0, 0, 0, 0),//TODO:
-              )
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: null,
-        child: Icon(Icons.add),
-      ),
-    );
-  }
-}
-*/
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -82,6 +52,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   addAction(){
-    Navigator.push(context, MaterialPageRoute(builder: (context) =>AddPage()));
+//    Navigator.push(context, MaterialPageRoute(builder: (context) =>AddPage()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginPage()));
 }
 }
