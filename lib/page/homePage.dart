@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   addAction(){
-//    Navigator.push(context, MaterialPageRoute(builder: (context) =>AddPage()));
-    Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginPage()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) =>AddPage()));
+//    Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginPage()));
 }
 }

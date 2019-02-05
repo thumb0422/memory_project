@@ -16,50 +16,6 @@ class RangButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     onInitData();
-    /*
-    return MaterialButton(
-      shape: RoundedRectangleBorder(
-        side: BorderSide(
-          color: Colors.deepPurple,
-          width: 2.0,
-          style: BorderStyle.solid,
-        ),
-        borderRadius: BorderRadius.all(Radius.circular(4)),
-      ),
-      height: 50,
-      minWidth: 100,
-      onPressed: null,
-      color: Colors.grey,
-      child: Text(
-        this.title,
-        style: TextStyle(
-          fontSize: 14.0,
-          color: Colors.black,
-        ),
-      ),
-    );
-    */
-
-    /*
-    return Material(
-      borderRadius: BorderRadius.circular(80.0),
-      shadowColor: Colors.blue.shade200,
-      elevation: 5.0,
-      child: new MaterialButton(
-        onPressed: () {},
-        minWidth: 160.0,
-        color: Colors.blue,
-        child: Text(
-          this.title,
-          style: TextStyle(
-            fontSize: 14.0,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
-    */
-
     return Container(
       width: 100,
       height: 64,
