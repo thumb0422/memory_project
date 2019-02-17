@@ -3,6 +3,8 @@
 **/
 import 'package:flutter/material.dart';
 import '../view/myDropDownButton.dart';
+import '../utility/tool.dart';
+import '../model/model.dart';
 
 class AddPage extends StatefulWidget {
   @override
@@ -15,17 +17,6 @@ class _AddPageState extends State<AddPage> {
   String _typeStr, _urlStr, _accountStr, _pwdStr, _descStr;
   bool _isObscure = true;
   Color _eyeColor;
-
-  _onSaveClick(BuildContext context) {
-    return showDialog(
-        context: context,
-        barrierDismissible: true,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('保存成功'),
-          );
-        });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -172,6 +163,9 @@ class _AddPageState extends State<AddPage> {
               _formKey.currentState.save();
               //TODO 执行登录方法
               print('url:$_urlStr, account:$_accountStr,assword:$_pwdStr');
+//              Model data = Model()
+//              DBManager db = DBManager();
+//              db.saveData();
             }
           },
           shape: StadiumBorder(side: BorderSide()),
