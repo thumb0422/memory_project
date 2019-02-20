@@ -1,7 +1,10 @@
 /**
  * 工具类，比如存储数据库
 **/
-
+import 'dart:async';
+import 'dart:io';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 import '../model/model.dart';
 
 class DBManager {
@@ -10,7 +13,9 @@ class DBManager {
   /**
    * CreateDB
    */
-  createDB() {}
+  createDB() {
+    
+  }
 
   /**
    * QueryData
