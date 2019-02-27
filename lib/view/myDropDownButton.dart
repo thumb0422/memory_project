@@ -11,6 +11,17 @@ class MyDropdownButton extends StatefulWidget {
 }
 
 class _MyDropdownButton extends State<MyDropdownButton> {
+  var dataList = [
+    {'code': '0001', 'name': '理财'},
+    {'code': '0002', 'name': '社交'},
+    {'code': '0003', 'name': '支付'},
+    {'code': '0004', 'name': '工作'},
+    {'code': '0005', 'name': '邮箱'},
+    {'code': '0006', 'name': '购物'},
+    {'code': '0007', 'name': '游戏'},
+    {'code': '0008', 'name': '其他'},
+  ];
+
   List<DropdownMenuItem> getListData() {
     List<DropdownMenuItem> items = List();
     DropdownMenuItem dropdownMenuItem1 = DropdownMenuItem(

@@ -1,0 +1,42 @@
+[
+  {
+    "code": "0001",
+    "name": "理财",
+    "icon": "licai.png"
+  },
+  {
+    "code": "0002",
+    "name": "社交",
+    "icon": "shejiao.png"
+  },
+  {
+    "code": "0003",
+    "name": "支付",
+    "icon": "zhifu.png"
+  },
+  {
+    "code": "0004",
+    "name": "工作",
+    "icon": "work.png"
+  },
+  {
+    "code": "0005",
+    "name": "邮箱",
+    "icon": "youxiang.png"
+  },
+  {
+    "code": "0006",
+    "name": "购物",
+    "icon": "gouwu.png"
+  },
+  {
+    "code": "0007",
+    "name": "游戏",
+    "icon": "youxi.png"
+  },
+  {
+    "code": "0008",
+    "name": "其他",
+    "icon": "other.png"
+  }
+]

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../view/myDropDownButton.dart';
 import '../utility/tool.dart';
 import '../model/model.dart';
+import 'dart:convert' show json;
 
 class AddPage extends StatefulWidget {
   @override
@@ -20,6 +21,35 @@ class _AddPageState extends State<AddPage> {
 
   @override
   Widget build(BuildContext context) {
+    return new FutureBuilder(
+      future: DefaultAssetBundle.of(context).loadString("assets/config1.json"),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<dynamic> data = json.decode(snapshot.data.toString());
+          print(data);
+          /**
+              return new ListView.builder(
+              itemCount: data.length,
+              itemBuilder: (BuildContext context, int index) {
+              return new Card(
+              child: new Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+              new Text("Name: ${data[index]["name"]}"),
+              new Text("Age: ${data[index]["age"]}"),
+              new Text("Height: ${data[index]["height"]}"),
+              new Text("Gender: ${data[index]["gender"]}"),
+              ],
+              ),
+              );
+              },
+              );
+           **/
+        }
+        return new CircularProgressIndicator();
+      },
+    );
+    /*
     return Scaffold(
       appBar: AppBar(
         title: Text('新增记忆仓库'),
@@ -44,6 +74,7 @@ class _AddPageState extends State<AddPage> {
             ],
           )),
     );
+    */
   }
 
   Padding _buildTypeView(BuildContext context) {

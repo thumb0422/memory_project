@@ -7,6 +7,9 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import '../model/model.dart';
 
+import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
+
 class DBManager {
   Model data;
   DBManager(this.data);
@@ -35,4 +38,8 @@ class DBManager {
    * DeleteData
    */
   deleteData() {}
+}
+
+Future<String> loadAsset() async {
+  return await rootBundle.loadString('assets/config1.json');
 }
