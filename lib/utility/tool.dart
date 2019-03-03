@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import '../model/model.dart';
+import 'package:json_parser/json_parser.dart';
 
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
@@ -40,6 +41,9 @@ class DBManager {
   deleteData() {}
 }
 
-Future<String> loadAsset() async {
-  return await rootBundle.loadString('assets/config1.json');
+Future<List> loadAsset() async {
+  String jsonData = await rootBundle.loadString('assets/config1.json');
+  JsonParser parser = new JsonParser();
+  List instance = parser.parseJson<Model>(jsonData);
+  return instance;
 }
