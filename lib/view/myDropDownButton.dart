@@ -24,6 +24,16 @@ class _MyDropdownButton extends State<MyDropdownButton> {
 
   List<DropdownMenuItem> getListData() {
     List<DropdownMenuItem> items = List();
+
+    for (var dic in dataList){
+      DropdownMenuItem dropdownMenuItem1 = DropdownMenuItem(
+        child: Text(dic['code']),
+        value: dic['name'],
+      );
+      items.add(dropdownMenuItem1);
+    }
+
+    /**
     DropdownMenuItem dropdownMenuItem1 = DropdownMenuItem(
       child: Text('0001'),
       value: '理财',
@@ -71,7 +81,7 @@ class _MyDropdownButton extends State<MyDropdownButton> {
       value: '其他',
     );
     items.add(dropdownMenuItem8);
-
+    **/
     return items;
   }
 
