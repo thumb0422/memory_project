@@ -25,7 +25,8 @@ class _AddPageState extends State<AddPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    future = loadAsset();
+    future = getLocalTypeModels();
+    print('11111');
   }
 
   @override

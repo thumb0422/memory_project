@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:memory_project/page/homePage.dart';
-import 'main.reflectable.dart';
 
-void main() {
-  initializeReflectable();
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

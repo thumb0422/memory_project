@@ -2,9 +2,7 @@
  * 数据模型、枚举
 **/
 import 'package:flutter/material.dart';
-import 'package:json_parser/reflectable.dart';
 
-@reflectable
 class Model {
   @required String typeId = '';
   @required String typeName = '';
@@ -19,7 +17,6 @@ class Model {
   }
 }
 
-@reflectable
 class TypeModel {
   String code = '';
   String name = '';
