@@ -10,8 +10,8 @@ class RangButton extends StatelessWidget {
     this.data,
   });
 
-  Model data;
-  String imageName;
+  TypeModel data;
+  String icon;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class RangButton extends StatelessWidget {
       height: 64,
       decoration: ShapeDecoration(
           image: DecorationImage(
-              image: AssetImage(this.imageName), fit: BoxFit.fill),
+              image: AssetImage(this.icon), fit: BoxFit.fill),
           shape: RoundedRectangleBorder(
             side: BorderSide(
               color: Colors.deepPurple,
@@ -37,14 +37,14 @@ class RangButton extends StatelessWidget {
   }
 
   onTouchUpInside() {
-    var str = this.data.typeName;
+    var str = this.data.name;
     var str1 = "onTouchUpInside ：${str}";
     print(str1);
   }
 
   onInitData() {
-    var imageNameTmp = data.imgName;
+    var imageNameTmp = data.icon;
     imageNameTmp = "images/${imageNameTmp}";
-    this.imageName = imageNameTmp;
+    this.icon = imageNameTmp;
   }
 }

@@ -19,11 +19,20 @@ class _AddPageState extends State<AddPage> {
   bool _isObscure = true;
   Color _eyeColor;
 
+  Future future;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    future = loadAsset();
+  }
+
   @override
   Widget build(BuildContext context) {
     /*
     return new FutureBuilder(
-      future: DefaultAssetBundle.of(context).loadString("assets/config1.json"),
+      future: DefaultAssetBundle.of(context).loadString("assets/config.json"),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<dynamic> data = json.decode(snapshot.data.toString());

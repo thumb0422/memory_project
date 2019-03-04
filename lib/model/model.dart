@@ -6,10 +6,10 @@ import 'package:json_parser/reflectable.dart';
 
 @reflectable
 class Model {
-   @required String typeId;
-   @required String typeName;
-   @required String imgName;
-   String desc = '';
+  @required String typeId = '';
+  @required String typeName = '';
+  String imgName = '';
+  String desc = '';
 
   Model(typeId,typeName,imgName,desc){
     this.typeId = typeId;
@@ -17,12 +17,17 @@ class Model {
     this.imgName = imgName;
     this.desc = desc;
   }
+}
 
-//  factory Model.fromJson(Map<String, dynamic> json) {
-//    return Model(
-//      typeId: json['typeId'],
-//      typeName: json['typeName'],
-//      desc: json['desc'],
-//    );
-//  }
+@reflectable
+class TypeModel {
+  String code = '';
+  String name = '';
+  String icon = '';
+
+  TypeModel(code,name,icon){
+    this.code = code;
+    this.name = name;
+    this.icon = icon;
+  }
 }

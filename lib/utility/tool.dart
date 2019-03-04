@@ -41,9 +41,9 @@ class DBManager {
   deleteData() {}
 }
 
-Future<List> loadAsset() async {
-  String jsonData = await rootBundle.loadString('assets/config1.json');
+Future<List<TypeModel>> loadAsset() async {
+  String jsonData = await rootBundle.loadString('assets/config.json');
   JsonParser parser = new JsonParser();
-  List instance = parser.parseJson<Model>(jsonData);
+  List instance = parser.parseJson<TypeModel>(jsonData);
   return instance;
 }
