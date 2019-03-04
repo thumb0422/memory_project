@@ -33,7 +33,7 @@ class _AddPageState extends State<AddPage> {
   Widget build(BuildContext context) {
     /*
     return new FutureBuilder(
-      future: DefaultAssetBundle.of(context).loadString("assets/config.json"),
+      future: DefaultAssetBundle.of(context).loadString("assets/typeConfig.json"),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<dynamic> data = json.decode(snapshot.data.toString());

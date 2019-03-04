@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:memory_project/main.dart';
+import 'package:memory_project/utility/tool.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
@@ -27,4 +28,10 @@ void main() {
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
+  
+  test('test getLocalTypeModels', (){
+    print('getLocalTypeModels');
+    Future futuer = getLocalTypeModels();
+  });
+
 }
