@@ -10,6 +10,8 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:memory_project/main.dart';
 import 'package:memory_project/utility/tool.dart';
+import 'package:memory_project/model/model.dart';
+import 'dart:convert';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
@@ -31,7 +33,11 @@ void main() {
   
   test('test getLocalTypeModels', (){
     print('getLocalTypeModels');
-    Future futuer = getLocalTypeModels();
+//    Future futuer = getLocalTypeModels();
+    String testData = '{"code":"123123","name":"aaaa","icon":"333"}';
+    Map decoded = jsonDecode(testData);
+    TypeModel typeModel = TypeModel.fromJson(decoded);
+    print(typeModel.name);
   });
 
 }
