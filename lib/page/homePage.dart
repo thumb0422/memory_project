@@ -16,6 +16,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  Future _future;
+
+  @override
+  void initState() {
+    super.initState();
+    _future = getLocalTypeModels();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +37,24 @@ class _HomePageState extends State<HomePage> {
               image: DecorationImage(
                   image: AssetImage('images/home.png'), fit: BoxFit.fill)),
           child: FutureBuilder<List<TypeModel>>(
-            future: getLocalTypeModels(),
+            future: _future,
             builder: (context,snapshot){
               if (snapshot.hasData){
+                List<TypeModel> datas = snapshot.data;
+                datas.forEach((item){
+                  TypeModel data = item;
+                  print(item.name);
+                });
                 return Wrap(
                   spacing: 15,
                   runSpacing: 10,
                   alignment: WrapAlignment.start,
                   children: <Widget>[
+                    //TODO:不能编译
+//                    datas.forEach((item){
+//                      TypeModel data = item;
+//                      RangButton(data: TypeModel(data.code, data.name, data.icon)),
+//                    });
                     RangButton(data: TypeModel('0001', '理财', 'licai.png')),
                     RangButton(data: TypeModel('0002', '社交', 'shejiao.png')),
                     RangButton(data: TypeModel('0003', '支付', 'zhifu.png')),

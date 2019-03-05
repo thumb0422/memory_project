@@ -19,30 +19,8 @@ class _AddPageState extends State<AddPage> {
   bool _isObscure = true;
   Color _eyeColor;
 
-  Future future;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    future = getLocalTypeModels();
-    print('11111');
-  }
-
   @override
   Widget build(BuildContext context) {
-    /*
-    return new FutureBuilder(
-      future: DefaultAssetBundle.of(context).loadString("assets/typeConfig.json"),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          List<dynamic> data = json.decode(snapshot.data.toString());
-          print(data);
-        }
-        return new CircularProgressIndicator();
-      },
-    );
-    */
     return Scaffold(
       appBar: AppBar(
         title: Text('新增记忆仓库'),
