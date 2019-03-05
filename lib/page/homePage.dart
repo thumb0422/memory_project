@@ -7,6 +7,7 @@ import '../view/rangButton.dart';
 import '../model/model.dart';
 import '../page/addPage.dart';
 import '../page/loginPage.dart';
+import '../utility/tool.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -26,22 +27,28 @@ class _HomePageState extends State<HomePage> {
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('images/home.png'), fit: BoxFit.fill)),
-          child: Container(
-            child: Wrap(
-              spacing: 15,
-              runSpacing: 10,
-              alignment: WrapAlignment.start,
-              children: <Widget>[
-                RangButton(data: TypeModel('0001', '理财', 'licai.png')),
-                RangButton(data: TypeModel('0002', '社交', 'shejiao.png')),
-                RangButton(data: TypeModel('0003', '支付', 'zhifu.png')),
-                RangButton(data: TypeModel('0004', '工作', 'work.png')),
-                RangButton(data: TypeModel('0005', '邮箱', 'youxiang.png')),
-                RangButton(data: TypeModel('0006', '购物', 'gouwu.png')),
-                RangButton(data: TypeModel('0007', '游戏', 'youxi.png')),
-                RangButton(data: TypeModel('0008', '其他', 'other.png')),
-              ],
-            ),
+          child: FutureBuilder<List<TypeModel>>(
+            future: getLocalTypeModels(),
+            builder: (context,snapshot){
+              if (snapshot.hasData){
+                return Wrap(
+                  spacing: 15,
+                  runSpacing: 10,
+                  alignment: WrapAlignment.start,
+                  children: <Widget>[
+                    RangButton(data: TypeModel('0001', '理财', 'licai.png')),
+                    RangButton(data: TypeModel('0002', '社交', 'shejiao.png')),
+                    RangButton(data: TypeModel('0003', '支付', 'zhifu.png')),
+                    RangButton(data: TypeModel('0004', '工作', 'work.png')),
+                    RangButton(data: TypeModel('0005', '邮箱', 'youxiang.png')),
+                    RangButton(data: TypeModel('0006', '购物', 'gouwu.png')),
+                    RangButton(data: TypeModel('0007', '游戏', 'youxi.png')),
+                    RangButton(data: TypeModel('0008', '其他', 'other.png')),
+                  ],
+                );
+              }
+              return new CircularProgressIndicator();
+            },
           )),
       floatingActionButton: FloatingActionButton(
         onPressed: addAction,

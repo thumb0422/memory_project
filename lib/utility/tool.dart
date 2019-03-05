@@ -39,8 +39,13 @@ class DBManager {
 }
 
 Future<List<TypeModel>> getLocalTypeModels() async {
+  List resultList = List();
   String jsonData = await rootBundle.loadString('assets/typeConfig.json');
-  Map decoded = jsonDecode(jsonData);
-
-  return null;
+  List list = json.decode(jsonData);
+  list.forEach((item){
+    TypeModel typeModel = TypeModel.fromJson(item);
+    resultList.add(typeModel);
+  });
+  print('count=');
+  return resultList;
 }
