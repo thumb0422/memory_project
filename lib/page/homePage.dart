@@ -40,30 +40,17 @@ class _HomePageState extends State<HomePage> {
             future: _future,
             builder: (context,snapshot){
               if (snapshot.hasData){
+                List<Widget> widgets = List();
                 List<TypeModel> datas = snapshot.data;
                 datas.forEach((item){
                   TypeModel data = item;
-                  print(item.name);
+                  widgets.add(RangButton(data: TypeModel(data.code, data.name, data.icon)));
                 });
                 return Wrap(
                   spacing: 15,
                   runSpacing: 10,
                   alignment: WrapAlignment.start,
-                  children: <Widget>[
-                    //TODO:不能编译
-//                    datas.forEach((item){
-//                      TypeModel data = item;
-//                      RangButton(data: TypeModel(data.code, data.name, data.icon)),
-//                    });
-                    RangButton(data: TypeModel('0001', '理财', 'licai.png')),
-                    RangButton(data: TypeModel('0002', '社交', 'shejiao.png')),
-                    RangButton(data: TypeModel('0003', '支付', 'zhifu.png')),
-                    RangButton(data: TypeModel('0004', '工作', 'work.png')),
-                    RangButton(data: TypeModel('0005', '邮箱', 'youxiang.png')),
-                    RangButton(data: TypeModel('0006', '购物', 'gouwu.png')),
-                    RangButton(data: TypeModel('0007', '游戏', 'youxi.png')),
-                    RangButton(data: TypeModel('0008', '其他', 'other.png')),
-                  ],
+                  children: widgets,
                 );
               }
               return new CircularProgressIndicator();
