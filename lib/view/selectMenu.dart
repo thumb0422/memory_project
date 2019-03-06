@@ -45,9 +45,9 @@ class SelectMenu extends StatelessWidget {
 **/
 
 class SelectMenu extends StatefulWidget {
-  final ValueChanged<String> onChanged;
-  final String selectedStr;
-  SelectMenu({Key key, String this.selectedStr, @required this.onChanged})
+  final ValueChanged<TypeModel> onChanged;
+  final TypeModel selectedValue;
+  SelectMenu({Key key, TypeModel this.selectedValue, @required this.onChanged})
       : super(key: key);
 
   @override
@@ -58,7 +58,9 @@ class SelectMenu extends StatefulWidget {
 
 class _SelectMenuState extends State<SelectMenu> {
 
-  String value ;
+  TypeModel value;
+
+  String defaultDisplay;
 
   List<DropdownMenuItem> items = List();
 
@@ -68,17 +70,24 @@ class _SelectMenuState extends State<SelectMenu> {
     MyGlobal().typeList.forEach((item) {
       DropdownMenuItem dropdownMenuItem1 = DropdownMenuItem(
         child: Text(item.name),
-        value: item.code,
+        value: item,
       );
       items.add(dropdownMenuItem1);
     });
+    this.value = widget.selectedValue;
+    if (null==this.value || null==this.value.name){
+      this.defaultDisplay = '类型选择';
+    }else {
+      this.defaultDisplay = this.value.name;
+    }
+    print(defaultDisplay);
   }
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
       items: items,
-      hint: Text('选择类型'), //当没有默认值的时候可以设置的提示
+      hint: Text(this.defaultDisplay), //当没有默认值的时候可以设置的提示
       value: value, //下拉菜单选择完之后显示给用户的值
       onChanged: (T) {
         //下拉菜单item点击之后的回调

@@ -47,8 +47,8 @@ class _AddPageState extends State<AddPage> {
 
   }
 
-  _onChanged(String value){
-    _typeStr = value;
+  _onChanged(TypeModel value){
+    _typeStr = value.code;
     print(_typeStr);
   }
 
@@ -80,8 +80,9 @@ class _AddPageState extends State<AddPage> {
             width: 10,
           ),
           SelectMenu(
-//              selectedStr: '',
-              onChanged: _onChanged)
+//              selectedValue: TypeModel('0001', '理财', 'licai.png'),
+              onChanged: _onChanged,
+              )
         ],
       ),
     );
