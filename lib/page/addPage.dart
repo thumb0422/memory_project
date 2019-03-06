@@ -2,10 +2,9 @@
  * 新增 页面
 **/
 import 'package:flutter/material.dart';
-import '../view/myDropDownButton.dart';
 import '../utility/tool.dart';
 import '../model/model.dart';
-import 'dart:convert' show json;
+import '../view/selectMenu.dart';
 
 class AddPage extends StatefulWidget {
   @override
@@ -75,7 +74,7 @@ class _AddPageState extends State<AddPage> {
           SizedBox(
             width: 10,
           ),
-          MyDropdownButton()
+          SelectMenu(),
         ],
       ),
     );
