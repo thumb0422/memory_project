@@ -8,6 +8,7 @@ import '../model/model.dart';
 import '../page/addPage.dart';
 import '../page/loginPage.dart';
 import '../utility/tool.dart';
+import '../utility/global.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -42,9 +43,9 @@ class _HomePageState extends State<HomePage> {
               if (snapshot.hasData){
                 List<Widget> widgets = List();
                 List<TypeModel> datas = snapshot.data;
+                MyGlobal().typeList = datas;//TODO:赋值给单例全局变量
                 datas.forEach((item){
-                  TypeModel data = item;
-                  widgets.add(RangButton(data: TypeModel(data.code, data.name, data.icon)));
+                  widgets.add(RangButton(data: TypeModel(item.code, item.name, item.icon)));
                 });
                 return Wrap(
                   spacing: 15,
