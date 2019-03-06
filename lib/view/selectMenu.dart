@@ -6,8 +6,12 @@ import '../utility/tool.dart';
 import '../model/model.dart';
 import '../utility/global.dart';
 
+/**
 class SelectMenu extends StatelessWidget {
   var value;
+  final ValueChanged<String> onChanged;
+  SelectMenu({Key key, @required this.onChanged})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +21,8 @@ class SelectMenu extends StatelessWidget {
       value: value, //下拉菜单选择完之后显示给用户的值
       onChanged: (T) {
         //下拉菜单item点击之后的回调
-        print(value);
-        print(T);
+        value = T;
+        onChanged(value);
       },
       elevation: 24, //设置阴影的高度
       style: TextStyle(color: Colors.black),
@@ -38,9 +42,14 @@ class SelectMenu extends StatelessWidget {
     return items;
   }
 }
+**/
 
-/**
 class SelectMenu extends StatefulWidget {
+  final ValueChanged<String> onChanged;
+  final String selectedStr;
+  SelectMenu({Key key, String this.selectedStr, @required this.onChanged})
+      : super(key: key);
+
   @override
   _SelectMenuState createState() {
     return _SelectMenuState();
@@ -48,7 +57,8 @@ class SelectMenu extends StatefulWidget {
 }
 
 class _SelectMenuState extends State<SelectMenu> {
-  var value;
+
+  String value ;
 
   List<DropdownMenuItem> items = List();
 
@@ -74,7 +84,7 @@ class _SelectMenuState extends State<SelectMenu> {
         //下拉菜单item点击之后的回调
         setState(() {
           value = T;
-          print(value);
+          widget.onChanged(value);
         });
       },
       elevation: 24, //设置阴影的高度
@@ -83,4 +93,3 @@ class _SelectMenuState extends State<SelectMenu> {
     );
   }
 }
-**/

@@ -47,6 +47,11 @@ class _AddPageState extends State<AddPage> {
 
   }
 
+  _onChanged(String value){
+    _typeStr = value;
+    print(_typeStr);
+  }
+
   Padding _buildTypeView(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 10),
@@ -74,7 +79,9 @@ class _AddPageState extends State<AddPage> {
           SizedBox(
             width: 10,
           ),
-          SelectMenu(),
+          SelectMenu(
+//              selectedStr: '',
+              onChanged: _onChanged)
         ],
       ),
     );
@@ -163,7 +170,7 @@ class _AddPageState extends State<AddPage> {
               ///只有输入的内容符合要求通过才会到达此处
               _formKey.currentState.save();
               //TODO 执行登录方法
-              print('url:$_urlStr, account:$_accountStr,assword:$_pwdStr');
+              print('type:$_typeStr,url:$_urlStr, account:$_accountStr,assword:$_pwdStr');
 //              Model data = Model()
 //              DBManager db = DBManager();
 //              db.saveData();
