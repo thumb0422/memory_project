@@ -7,14 +7,16 @@ part of 'model.dart';
 // **************************************************************************
 
 Model _$ModelFromJson(Map<String, dynamic> json) {
-  return Model(json['typeId'], json['typeName'], json['imgName'], json['desc']);
+  return Model(json['typeId'], json['account'], json['accountUrl'],
+      json['accountPwd'], json['accountDesc']);
 }
 
 Map<String, dynamic> _$ModelToJson(Model instance) => <String, dynamic>{
       'typeId': instance.typeId,
-      'typeName': instance.typeName,
-      'imgName': instance.imgName,
-      'desc': instance.desc
+      'account': instance.account,
+      'accountUrl': instance.accountUrl,
+      'accountPwd': instance.accountPwd,
+      'accountDesc': instance.accountDesc
     };
 
 TypeModel _$TypeModelFromJson(Map<String, dynamic> json) {

@@ -9,16 +9,17 @@ part 'model.g.dart';
 class Model {
   @required
   String typeId = '';
-  @required
-  String typeName = '';
-  String imgName = '';
-  String desc = '';
+  String account = '';
+  String accountUrl = '';
+  String accountPwd = '';
+  String accountDesc = '';
 
-  Model(typeId, typeName, imgName, desc) {
+  Model(typeId,account,accountUrl, accountPwd,accountDesc) {
     this.typeId = typeId;
-    this.typeName = typeName;
-    this.imgName = imgName;
-    this.desc = desc;
+    this.account = account;
+    this.accountUrl = accountUrl;
+    this.accountPwd = accountPwd;
+    this.accountDesc = accountDesc;
   }
 
   factory Model.fromJson(Map<String, dynamic> json) => _$ModelFromJson(json);

@@ -13,7 +13,7 @@ class ListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${data.typeName}记忆'),
+//        title: Text('${data.typeName}记忆'),
       ),
       body: Center(
         child: Column(

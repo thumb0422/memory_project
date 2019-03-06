@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-
+import '../model/model.dart';
 
 class EventsDatabase {
   static const EVENT_TABLE_NAME = "db005";
@@ -29,11 +29,23 @@ class EventsDatabase {
   }
 
   void _onCreate(Database db, int version) async {
-    await db.execute("CREATE TABLE " + EVENT_TABLE_NAME + " (accountKey  VARCHAR (30) NOT NULL UNIQUE PRIMARY KEY,accountUrl VARCHAR (200) ,account VARCHAR (200) ,accountPWD  VARCHAR (250) ,accountDesc VARCHAR (255)  NOT NULL,dataType VARCHAR (8) NOT NULL)");
+    await db.execute("CREATE TABLE " + EVENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,accountUrl VARCHAR (200) ,account VARCHAR (200) ,accountPWD  VARCHAR (250) ,accountDesc VARCHAR (255)  NOT NULL,dataType VARCHAR (8) NOT NULL)");
   }
 
   Future closeDb() async {
     var dbClient = await db;
     return dbClient.close();
+  }
+
+  createData(Model data) async{
+    var result = await _db.rawInsert("INSERT INTO $EVENT_TABLE_NAME (accountUrl,account,accountPWD,accountDesc,dataType)"
+    " VALUES (${data.accountUrl},${data.account},${data.accountPwd},${data.accountDesc})");
+    return result;
+  }
+
+  deleteData(Model data) async{
+    var result = await _db.rawInsert("delete from $EVENT_TABLE_NAME "
+        " where account = ${data.account}");
+    return result;
   }
 }
