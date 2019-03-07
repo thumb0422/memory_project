@@ -7,15 +7,17 @@ part of 'model.dart';
 // **************************************************************************
 
 Model _$ModelFromJson(Map<String, dynamic> json) {
-  return Model(json['typeId'], json['account'], json['accountUrl'],
-      json['accountPwd'], json['accountDesc']);
+  return Model(json['dataType'], json['account'], json['accountUrl'],
+      json['accountPWD'], json['accountDesc'])
+    ..id = json['id'] as int;
 }
 
 Map<String, dynamic> _$ModelToJson(Model instance) => <String, dynamic>{
-      'typeId': instance.typeId,
+      'id': instance.id,
+      'dataType': instance.typeId,
       'account': instance.account,
       'accountUrl': instance.accountUrl,
-      'accountPwd': instance.accountPwd,
+      'accountPWD': instance.accountPwd,
       'accountDesc': instance.accountDesc
     };
 

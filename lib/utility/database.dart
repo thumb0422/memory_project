@@ -28,7 +28,7 @@ class DBProvider {
     return await openDatabase(path, version: 1, onOpen: (db) {},
         onCreate: (Database db, int version) async {
           await db.execute("CREATE TABLE " + TABLE_NAME + " "
-              "(ID INTEGER PRIMARY KEY AUTOINCREMENT,accountUrl VARCHAR (200) ,account VARCHAR (200) ,"
+              "(id INTEGER PRIMARY KEY AUTOINCREMENT,accountUrl VARCHAR (200) ,account VARCHAR (200) ,"
               "accountPWD  VARCHAR (250) ,accountDesc VARCHAR (255)  NOT NULL,dataType VARCHAR (8) NOT NULL)"
           );
         });
@@ -46,25 +46,6 @@ class DBProvider {
         [id, data.accountUrl, data.account, data.accountPwd,data.accountDesc,data.typeId]);
     return raw;
   }
-
-//  blockOrUnblock(Client client) async {
-//    final db = await database;
-//    Client blocked = Client(
-//        id: client.id,
-//        firstName: client.firstName,
-//        lastName: client.lastName,
-//        blocked: !client.blocked);
-//    var res = await db.update("Client", blocked.toMap(),
-//        where: "id = ?", whereArgs: [client.id]);
-//    return res;
-//  }
-
-//  updateClient(Client newClient) async {
-//    final db = await database;
-//    var res = await db.update("Client", newClient.toMap(),
-//        where: "id = ?", whereArgs: [newClient.id]);
-//    return res;
-//  }
 
   getDataById(int id) async {
     final db = await database;

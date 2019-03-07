@@ -8,36 +8,9 @@ import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 
-class DBManager {
-  Model data;
-  DBManager(this.data);
-  /**
-   * CreateDB
-   */
-  createDB() {
-    
-  }
-
-  /**
-   * QueryData
-   */
-  queryData() {}
-
-  /**
-   *SaveData
-   */
-  saveData() {}
-  /**
-   * UpdateData
-   */
-  updateData() {}
-
-  /**
-   * DeleteData
-   */
-  deleteData() {}
-}
-
+/**
+ * 加载本地文件
+ */
 Future<List<TypeModel>> getLocalTypeModels() async {
   List<TypeModel> resultList = List();
   String jsonData = await rootBundle.loadString('assets/typeConfig.json');

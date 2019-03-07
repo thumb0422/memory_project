@@ -7,10 +7,13 @@ part 'model.g.dart';
 
 @JsonSerializable()
 class Model {
+  int id;
   @required
+  @JsonKey(name: 'dataType')
   String typeId = '';
   String account = '';
   String accountUrl = '';
+  @JsonKey(name: 'accountPWD')
   String accountPwd = '';
   String accountDesc = '';
 
