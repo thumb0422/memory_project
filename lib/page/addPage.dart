@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../utility/tool.dart';
 import '../model/model.dart';
 import '../view/selectMenu.dart';
+import '../utility/database.dart';
 
 class AddPage extends StatefulWidget {
   @override
@@ -166,15 +167,15 @@ class _AddPageState extends State<AddPage> {
             style: Theme.of(context).primaryTextTheme.headline,
           ),
           color: Colors.black,
-          onPressed: () {
+          onPressed: () async {
             if (_formKey.currentState.validate()) {
               ///只有输入的内容符合要求通过才会到达此处
               _formKey.currentState.save();
               //TODO 执行登录方法
               print('type:$_typeStr,url:$_urlStr, account:$_accountStr,assword:$_pwdStr');
-//              Model data = Model()
-//              DBManager db = DBManager();
-//              db.saveData();
+              //TODO:保存数据
+              Model data = Model(_typeStr, _accountStr, _urlStr, _pwdStr, _descStr);
+              await DBProvider.db.newData(data);
             }
           },
           shape: StadiumBorder(side: BorderSide()),

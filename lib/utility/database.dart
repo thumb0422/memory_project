@@ -1,37 +1,104 @@
 import 'dart:async';
 import 'dart:io';
+
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-// return the path
-Future<String> initDb(String dbName) async {
-  var databasePath = await getDatabasesPath();
-  // print(databasePath);
-  String path = join(databasePath, dbName);
+import '../model/model.dart';
 
-  Database db = await openDatabase(path);
+class DBProvider {
+  static const TABLE_NAME = "db005";
+  DBProvider._();
 
-  // make sure the folder exists
-  if (await Directory(dirname(path)).exists()) {
-//    await deleteDatabase(path);
-    Database db = await openDatabase(path);
-    var sqfliteOptions = SqfliteOptions()..queryAsMapList = true;
-    // ignore: deprecated_member_use
-    await Sqflite.devSetOptions(sqfliteOptions);
-    String sql =
-        "select count(*) as count1 from sqlite_master where type='table' and name = 'db005'";
-    // ignore: deprecated_member_use
-    var result = await db.devInvokeSqlMethod("query", sql);
-    if (result[0]["count1"] == 0) {
-      await db.execute(
-          "CREATE TABLE db005 (accountKey  VARCHAR (30) NOT NULL UNIQUE PRIMARY KEY,accountUrl VARCHAR (200) ,account VARCHAR (200) ,accountPWD  VARCHAR (250) ,accountDesc VARCHAR (255)  NOT NULL,dataType VARCHAR (8) NOT NULL)");
-    }
-  } else {
-    try {
-      await Directory(dirname(path)).create(recursive: true);
-    } catch (e) {
-      print(e);
-    }
+  static final DBProvider db = DBProvider._();
+
+  Database _database;
+
+  Future<Database> get database async {
+    if (_database != null) return _database;
+    // if _database is null we instantiate it
+    _database = await initDB();
+    return _database;
   }
-  return path;
+
+  initDB() async {
+    Directory documentsDirectory = await getApplicationDocumentsDirectory();
+    String path = join(documentsDirectory.path, "P.db");
+    return await openDatabase(path, version: 1, onOpen: (db) {},
+        onCreate: (Database db, int version) async {
+          await db.execute("CREATE TABLE " + TABLE_NAME + " "
+              "(ID INTEGER PRIMARY KEY AUTOINCREMENT,accountUrl VARCHAR (200) ,account VARCHAR (200) ,"
+              "accountPWD  VARCHAR (250) ,accountDesc VARCHAR (255)  NOT NULL,dataType VARCHAR (8) NOT NULL)"
+          );
+        });
+  }
+
+  newData(Model data) async {
+    final db = await database;
+    //get the biggest id in the table
+    var table = await db.rawQuery("SELECT MAX(id)+1 as id FROM '$TABLE_NAME'");
+    int id = table.first["id"];
+    //insert to the table using the new id
+    var raw = await db.rawInsert(
+        "INSERT Into '$TABLE_NAME' (id,accountUrl,account,accountPWD,accountDesc,dataType)"
+            " VALUES (?,?,?,?,?,?)",
+        [id, data.accountUrl, data.account, data.accountPwd,data.accountDesc,data.typeId]);
+    return raw;
+  }
+
+//  blockOrUnblock(Client client) async {
+//    final db = await database;
+//    Client blocked = Client(
+//        id: client.id,
+//        firstName: client.firstName,
+//        lastName: client.lastName,
+//        blocked: !client.blocked);
+//    var res = await db.update("Client", blocked.toMap(),
+//        where: "id = ?", whereArgs: [client.id]);
+//    return res;
+//  }
+
+//  updateClient(Client newClient) async {
+//    final db = await database;
+//    var res = await db.update("Client", newClient.toMap(),
+//        where: "id = ?", whereArgs: [newClient.id]);
+//    return res;
+//  }
+
+  getDataById(int id) async {
+    final db = await database;
+    var res = await db.query("$TABLE_NAME", where: "id = ?", whereArgs: [id]);
+    return res.isNotEmpty ? Model.fromJson(res.first) : null;
+  }
+
+//  Future<List<Client>> getBlockedClients() async {
+//    final db = await database;
+//
+//    print("works");
+//    // var res = await db.rawQuery("SELECT * FROM Client WHERE blocked=1");
+//    var res = await db.query("Client", where: "blocked = ? ", whereArgs: [1]);
+//
+//    List<Client> list =
+//    res.isNotEmpty ? res.map((c) => Client.fromMap(c)).toList() : [];
+//    return list;
+//  }
+
+  Future<List<Model>> getAllDatas() async {
+    final db = await database;
+    var res = await db.query("$TABLE_NAME");
+    List<Model> list =
+    res.isNotEmpty ? res.map((c) => Model.fromJson(c)).toList() : [];
+    return list;
+  }
+
+  deleteData(int id) async {
+    final db = await database;
+    return db.delete('$TABLE_NAME', where: "id = ?", whereArgs: [id]);
+  }
+
+  deleteAll() async {
+    final db = await database;
+    db.rawDelete("Delete * from '$TABLE_NAME'");
+  }
 }

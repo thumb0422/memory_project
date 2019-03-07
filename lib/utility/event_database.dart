@@ -23,8 +23,8 @@ class EventsDatabase {
 
   Future<Database> initDB() async {
     var databasesPath = await getDatabasesPath();
-    String path = join(databasesPath, "event.db");
-    var theDatabase = await openDatabase(path, version: 1, onCreate: _onCreate);
+    String path = join(databasesPath, "p.db");
+    var theDatabase = await openDatabase(path, version: 1,onOpen: (_db){ }, onCreate: _onCreate);
     return theDatabase;
   }
 
@@ -38,14 +38,32 @@ class EventsDatabase {
   }
 
   createData(Model data) async{
-    var result = await _db.rawInsert("INSERT INTO $EVENT_TABLE_NAME (accountUrl,account,accountPWD,accountDesc,dataType)"
-    " VALUES (${data.accountUrl},${data.account},${data.accountPwd},${data.accountDesc})");
+    var dbClient = await db;
+    var result = await dbClient.insert('$EVENT_TABLE_NAME', data.toJson());
     return result;
   }
 
   deleteData(Model data) async{
-    var result = await _db.rawInsert("delete from $EVENT_TABLE_NAME "
-        " where account = ${data.account}");
-    return result;
+    var dbClient = await db;
+    dbClient.rawDelete("Delete * from '$EVENT_TABLE_NAME'");
+  }
+
+  getDataByType(String type) async {
+    var dbClient = await db;
+    String sqlStr = 'select * from $EVENT_TABLE_NAME where 1=1';
+    if (null == type){
+
+    }else {
+      sqlStr = sqlStr + ' and dataType = "$type"';
+    }
+    var res = await dbClient.rawQuery(sqlStr);
+    List<Model> list = res.isNotEmpty ? res.toList().map((c) => Model.fromJson(c)) : null;
+    return list;
+  }
+
+  getDataById(int id) async {
+    final dbClient = await db;
+    var res = await  dbClient.query('$EVENT_TABLE_NAME', where: "id = ?", whereArgs: [id]);
+    return res.isNotEmpty ? Model.fromJson(res.first) : Null ;
   }
 }
