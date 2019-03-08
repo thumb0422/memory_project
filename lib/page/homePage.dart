@@ -6,6 +6,7 @@ import 'dart:ui';
 import '../view/rangButton.dart';
 import '../model/model.dart';
 import '../page/addPage.dart';
+import '../page/listPage.dart';
 import '../page/loginPage.dart';
 import '../utility/tool.dart';
 import '../utility/global.dart';
@@ -39,8 +40,8 @@ class _HomePageState extends State<HomePage> {
                   image: AssetImage('images/home.png'), fit: BoxFit.fill)),
           child: FutureBuilder<List<TypeModel>>(
             future: _future,
-            builder: (context,snapshot){
-              if (snapshot.hasData){
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
                 List<Widget> widgets = List();
                 List<TypeModel> datas = snapshot.data;
                 MyGlobal().typeList = datas;//TODO:赋值给单例全局变量
@@ -66,7 +67,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   addAction(){
-    Navigator.push(context, MaterialPageRoute(builder: (context) =>AddPage()));
+//    Navigator.push(context, MaterialPageRoute(builder: (context) =>AddPage()));
 //    Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginPage()));
-}
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ListPage(data: TypeModel('0001', 'A1', 'asd.png'),)));
+  }
+
+  clickEvent(TypeModel data) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ListPage()));
+  }
 }

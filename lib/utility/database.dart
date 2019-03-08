@@ -53,17 +53,13 @@ class DBProvider {
     return res.isNotEmpty ? Model.fromJson(res.first) : null;
   }
 
-//  Future<List<Client>> getBlockedClients() async {
-//    final db = await database;
-//
-//    print("works");
-//    // var res = await db.rawQuery("SELECT * FROM Client WHERE blocked=1");
-//    var res = await db.query("Client", where: "blocked = ? ", whereArgs: [1]);
-//
-//    List<Client> list =
-//    res.isNotEmpty ? res.map((c) => Client.fromMap(c)).toList() : [];
-//    return list;
-//  }
+  Future<List<Model>> getDatasByType(String dataType) async {
+    final db = await database;
+    var res = await db.query("$TABLE_NAME", where: "dataType = ?", whereArgs: [dataType]);
+    List<Model> list =
+    res.isNotEmpty ? res.map((c) => Model.fromJson(c)).toList() : [];
+    return list;
+  }
 
   Future<List<Model>> getAllDatas() async {
     final db = await database;
