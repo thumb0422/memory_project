@@ -6,7 +6,8 @@
 **/
 
 import 'package:flutter/material.dart';
-import 'package:memory_project/model/model.dart';
+import '../model/model.dart';
+import '../view/titleValueView.dart';
 
 class InfoCell extends StatelessWidget {
 
@@ -20,15 +21,8 @@ class InfoCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-
-        Text(this.data.accountUrl,
-        style: TextStyle(
-          color: Colors.red
-        ),),
-        Text(this.data.accountDesc,
-        style: TextStyle(
-          color: Colors.green
-        ),),
+        TitleValueView(title: '网址', value: this.data.accountUrl,bgColor: Colors.grey,),
+        TitleValueView(title: '说明', value: this.data.accountDesc,bgColor: Colors.blue),
       ],
     );
   }
