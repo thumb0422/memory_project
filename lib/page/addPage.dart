@@ -26,6 +26,7 @@ class _AddPageState extends State<AddPage> {
         title: Text('新增记忆仓库'),
         centerTitle: true,
       ),
+      backgroundColor: Color.fromRGBO(243, 255, 212, 1),
       body: Form(
           key: _formKey,
           child: ListView(
@@ -45,10 +46,9 @@ class _AddPageState extends State<AddPage> {
             ],
           )),
     );
-
   }
 
-  _onChanged(TypeModel value){
+  _onChanged(TypeModel value) {
     _typeStr = value.code;
     print(_typeStr);
   }
@@ -82,8 +82,8 @@ class _AddPageState extends State<AddPage> {
           ),
           SelectMenu(
 //              selectedValue: TypeModel('0001', '理财', 'licai.png'),
-              onChanged: _onChanged,
-              )
+            onChanged: _onChanged,
+          )
         ],
       ),
     );
@@ -172,9 +172,11 @@ class _AddPageState extends State<AddPage> {
               ///只有输入的内容符合要求通过才会到达此处
               _formKey.currentState.save();
               //TODO 执行登录方法
-              print('type:$_typeStr,url:$_urlStr, account:$_accountStr,assword:$_pwdStr');
+              print(
+                  'type:$_typeStr,url:$_urlStr, account:$_accountStr,assword:$_pwdStr');
               //TODO:保存数据
-              Model data = Model(_typeStr, _accountStr, _urlStr, _pwdStr, _descStr);
+              Model data =
+                  Model(_typeStr, _accountStr, _urlStr, _pwdStr, _descStr);
               await DBProvider.db.newData(data);
             }
           },

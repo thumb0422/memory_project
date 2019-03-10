@@ -18,7 +18,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   Future _future;
 
   @override
@@ -44,11 +43,19 @@ class _HomePageState extends State<HomePage> {
               if (snapshot.hasData) {
                 List<Widget> widgets = List();
                 List<TypeModel> datas = snapshot.data;
-                MyGlobal().typeList = datas;//TODO:赋值给单例全局变量
-                datas.forEach((item){
-                  widgets.add(RangButton(data: TypeModel(item.code, item.name, item.icon),callback: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListPage(data: item,)));
-                  },));
+                MyGlobal().typeList = datas; //TODO:赋值给单例全局变量
+                datas.forEach((item) {
+                  widgets.add(RangButton(
+                    data: TypeModel(item.code, item.name, item.icon),
+                    callback: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ListPage(
+                                    data: item,
+                                  )));
+                    },
+                  ));
                 });
                 return Wrap(
                   spacing: 15,
@@ -68,12 +75,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  addAction(){
-    Navigator.push(context, MaterialPageRoute(builder: (context) =>AddPage()));
+  addAction() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => AddPage()));
 //    Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginPage()));
   }
 
   clickEvent(TypeModel data) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ListPage()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => ListPage()));
   }
 }

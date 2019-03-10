@@ -40,7 +40,6 @@ class InfoCell extends StatelessWidget {
                 ],
               )),
               Container(
-                color: Colors.yellow,
                 width: 40,
                 child: Image.asset('images/rightArrow.png'),
               ),
