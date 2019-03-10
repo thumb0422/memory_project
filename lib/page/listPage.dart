@@ -3,6 +3,7 @@
 **/
 import 'package:flutter/material.dart';
 import 'package:memory_project/model/model.dart';
+import 'dart:math';
 import '../utility/database.dart';
 import '../view/infoCell.dart';
 
@@ -11,6 +12,9 @@ class ListPage extends StatelessWidget {
     this.data,
   });
   TypeModel data ;
+
+  List<Color> colorList = [Colors.yellow,Colors.blue,Colors.green];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +28,8 @@ class ListPage extends StatelessWidget {
             List<Widget> widgets = List();
             List<Model> datas = snapshot.data;
             datas.forEach((item){
-              widgets.add(InfoCell(data: Model(item.typeId, item.account, item.accountUrl,item.accountPwd,item.accountDesc)));
+              widgets.add(InfoCell(data: Model(item.typeId, item.account, item.accountUrl,item.accountPwd,item.accountDesc),
+              bgColor: Colors.green,));
             });
             if (datas.length > 0){
               return ListView(

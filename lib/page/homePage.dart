@@ -32,8 +32,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Container(
           constraints: BoxConstraints.expand(
-              width: window.physicalSize.width,
-              height: window.physicalSize.height),
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height),
           alignment: Alignment.center,
           decoration: BoxDecoration(
               image: DecorationImage(
