@@ -46,7 +46,9 @@ class _HomePageState extends State<HomePage> {
                 List<TypeModel> datas = snapshot.data;
                 MyGlobal().typeList = datas;//TODO:赋值给单例全局变量
                 datas.forEach((item){
-                  widgets.add(RangButton(data: TypeModel(item.code, item.name, item.icon)));
+                  widgets.add(RangButton(data: TypeModel(item.code, item.name, item.icon),callback: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListPage(data: item,)));
+                  },));
                 });
                 return Wrap(
                   spacing: 15,
@@ -67,9 +69,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   addAction(){
-//    Navigator.push(context, MaterialPageRoute(builder: (context) =>AddPage()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) =>AddPage()));
 //    Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginPage()));
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ListPage(data: TypeModel('0001', 'A1', 'asd.png'),)));
   }
 
   clickEvent(TypeModel data) {

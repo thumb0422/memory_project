@@ -8,9 +8,11 @@ import 'package:memory_project/model/model.dart';
 class RangButton extends StatelessWidget {
   RangButton({
     this.data,
+    this.callback,
   });
 
   TypeModel data;
+  GestureTapCallback callback;
   String icon;
 
   @override
@@ -31,7 +33,9 @@ class RangButton extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(20)),
           )),
       child: GestureDetector(
-        onTap: onTouchUpInside,
+        onTap: (){
+          callback();
+        },
       ),
     );
   }
