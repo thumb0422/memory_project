@@ -2,12 +2,11 @@
  * 首页 : 全屏、一张背景图、 下半部分多个可滑动的按钮、左下角按钮（投诉）、右下角按钮（新增）
 **/
 import 'package:flutter/material.dart';
-import 'dart:ui';
 import '../view/rangButton.dart';
 import '../model/model.dart';
 import '../page/addPage.dart';
 import '../page/listPage.dart';
-import '../page/loginPage.dart';
+//import '../page/loginPage.dart';
 import '../utility/tool.dart';
 import '../utility/global.dart';
 
@@ -68,20 +67,15 @@ class _HomePageState extends State<HomePage> {
             },
           )),
       floatingActionButton: FloatingActionButton(
-        onPressed: addAction,
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddPage()));
+//          Navigator.push(
+//              context, MaterialPageRoute(builder: (context) => LoginPage()));
+        },
         child: Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
-  }
-
-  addAction() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => AddPage()));
-//    Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginPage()));
-  }
-
-  clickEvent(TypeModel data) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ListPage()));
   }
 }

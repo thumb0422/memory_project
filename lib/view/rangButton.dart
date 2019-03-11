@@ -11,8 +11,8 @@ class RangButton extends StatelessWidget {
     this.callback,
   });
 
-  TypeModel data;
-  GestureTapCallback callback;
+  final TypeModel data;
+  final GestureTapCallback callback;
   String icon;
 
   @override

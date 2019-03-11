@@ -8,9 +8,7 @@ import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 
-/**
- * 加载本地文件
- */
+///加载本地文件
 Future<List<TypeModel>> getLocalTypeModels() async {
   List<TypeModel> resultList = List();
   String jsonData = await rootBundle.loadString('assets/typeConfig.json');

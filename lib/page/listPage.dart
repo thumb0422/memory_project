@@ -3,17 +3,17 @@
 **/
 import 'package:flutter/material.dart';
 import 'package:memory_project/model/model.dart';
-import 'dart:math';
 import '../utility/database.dart';
 import '../view/infoCell.dart';
+import '../page/detailPage.dart';
 
 class ListPage extends StatelessWidget {
   ListPage({
     this.data,
   });
-  TypeModel data;
+  final TypeModel data;
 
-  List<Color> colorList = [
+  final List<Color> colorList = [
     Color.fromRGBO(195, 242, 154, 1),
     Color.fromRGBO(238, 234, 170, 1),
   ];
@@ -34,9 +34,12 @@ class ListPage extends StatelessWidget {
             datas.forEach((item) {
               var index = datas.indexOf(item);
               widgets.add(InfoCell(
-                data: Model(item.typeId, item.account, item.accountUrl,
-                    item.accountPwd, item.accountDesc),
+                data: item,
                 bgColor: colorList[index % 2],
+                onCellSelected: (){
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => DetailPage(data: item,)));
+                },
               ));
             });
             if (datas.length > 0) {
