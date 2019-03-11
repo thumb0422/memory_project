@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../model/model.dart';
 import '../view/selectMenu.dart';
 import '../utility/database.dart';
+import '../utility/global.dart';
 
 class AddPage extends StatefulWidget {
   @override
@@ -25,7 +26,7 @@ class _AddPageState extends State<AddPage> {
         title: Text('新增记忆仓库'),
         centerTitle: true,
       ),
-      backgroundColor: Color.fromRGBO(243, 255, 212, 1),
+      backgroundColor: pageBgColor,
       body: Form(
           key: _formKey,
           child: ListView(
@@ -224,7 +225,8 @@ class _AddPageState extends State<AddPage> {
                             FlatButton(
                                 onPressed: () {
                                   ///跳转至首页
-                                  Navigator.of(context).popUntil((route) => route.isFirst);
+                                  Navigator.of(context)
+                                      .popUntil((route) => route.isFirst);
 //                                  Navigator.popUntil(context, ModalRoute.withName('/'));
                                 },
                                 child: Text('确定')),

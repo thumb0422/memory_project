@@ -88,22 +88,22 @@ class _LoginPageState extends State<LoginPage> {
       alignment: MainAxisAlignment.center,
       children: _loginMethod
           .map((item) => Builder(
-        builder: (context) {
-          return IconButton(
-              icon: Icon(item['icon'],
-                  color: Theme.of(context).iconTheme.color),
-              onPressed: () {
-                //TODO : 第三方登录方法
-                Scaffold.of(context).showSnackBar(new SnackBar(
-                  content: new Text("${item['title']}登录"),
-                  action: new SnackBarAction(
-                    label: "取消",
-                    onPressed: () {},
-                  ),
-                ));
-              });
-        },
-      ))
+                builder: (context) {
+                  return IconButton(
+                      icon: Icon(item['icon'],
+                          color: Theme.of(context).iconTheme.color),
+                      onPressed: () {
+                        //TODO : 第三方登录方法
+                        Scaffold.of(context).showSnackBar(new SnackBar(
+                          content: new Text("${item['title']}登录"),
+                          action: new SnackBarAction(
+                            label: "取消",
+                            onPressed: () {},
+                          ),
+                        ));
+                      });
+                },
+              ))
           .toList(),
     );
   }

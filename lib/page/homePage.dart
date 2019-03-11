@@ -63,7 +63,9 @@ class _HomePageState extends State<HomePage> {
                   children: widgets,
                 );
               }
-              return new CircularProgressIndicator();
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             },
           )),
       floatingActionButton: FloatingActionButton(

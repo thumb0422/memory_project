@@ -6,6 +6,7 @@ import 'package:memory_project/model/model.dart';
 import '../utility/database.dart';
 import '../view/infoCell.dart';
 import '../page/detailPage.dart';
+import '../utility/global.dart';
 
 class ListPage extends StatelessWidget {
   ListPage({
@@ -24,7 +25,7 @@ class ListPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('${data.name}记忆'),
       ),
-      backgroundColor: Color.fromRGBO(243, 255, 212, 1),
+      backgroundColor: pageBgColor,
       body: FutureBuilder<List<Model>>(
         future: DBProvider.db.getDatasByType(data.code),
         builder: (context, snapshot) {
@@ -36,9 +37,14 @@ class ListPage extends StatelessWidget {
               widgets.add(InfoCell(
                 data: item,
                 bgColor: colorList[index % 2],
-                onCellSelected: (){
+                onCellSelected: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => DetailPage(data: item,title: this.data.name,)));
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DetailPage(
+                                data: item,
+                                title: this.data.name,
+                              )));
                 },
               ));
             });
@@ -52,7 +58,9 @@ class ListPage extends StatelessWidget {
               );
             }
           }
-          return CircularProgressIndicator();
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );
