@@ -38,7 +38,7 @@ class ListPage extends StatelessWidget {
                 bgColor: colorList[index % 2],
                 onCellSelected: (){
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => DetailPage(data: item,)));
+                      context, MaterialPageRoute(builder: (context) => DetailPage(data: item,title: this.data.name,)));
                 },
               ));
             });

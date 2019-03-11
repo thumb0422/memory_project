@@ -173,10 +173,87 @@ class _AddPageState extends State<AddPage> {
               //TODO 执行登录方法
               print(
                   'type:$_typeStr,url:$_urlStr, account:$_accountStr,assword:$_pwdStr');
-              //TODO:保存数据
-              Model data =
-                  Model(_typeStr, _accountStr, _urlStr, _pwdStr, _descStr);
-              await DBProvider.db.newData(data);
+              if (null == _typeStr || _typeStr.isEmpty) {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(
+                          '提示',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        content: SingleChildScrollView(
+                          child: Text(
+                            '请选择类型',
+                            style: TextStyle(fontSize: 17, color: Colors.red),
+                          ),
+                        ),
+                        actions: <Widget>[
+                          FlatButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+//                                Navigator.pop(context);
+//                                Navigator.pop(context, true);
+                              },
+                              child: Text('确定')),
+                        ],
+                      );
+                    });
+              } else {
+                //TODO:保存数据
+                Model data =
+                    Model(_typeStr, _accountStr, _urlStr, _pwdStr, _descStr);
+                var result = await DBProvider.db.newData(data);
+                if (result > 0) {
+                  print('success');
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text(
+                            '提示',
+                            style: TextStyle(fontSize: 14),
+                          ),
+                          content: SingleChildScrollView(
+                            child: Text(
+                              '保存成功',
+                              style: TextStyle(fontSize: 17, color: Colors.red),
+                            ),
+                          ),
+                          actions: <Widget>[
+                            FlatButton(
+                                onPressed: () {
+                                  ///跳转至首页
+                                  Navigator.of(context).popUntil((route) => route.isFirst);
+//                                  Navigator.popUntil(context, ModalRoute.withName('/'));
+                                },
+                                child: Text('确定')),
+                          ],
+                        );
+                      });
+                } else {
+                  print('failed');
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text(
+                            '提示',
+                            style: TextStyle(fontSize: 14),
+                          ),
+                          content: SingleChildScrollView(
+                            child: Text(
+                              '保存失败',
+                              style: TextStyle(fontSize: 17, color: Colors.red),
+                            ),
+                          ),
+                          actions: <Widget>[
+                            FlatButton(onPressed: null, child: Text('确定')),
+                          ],
+                        );
+                      });
+                }
+              }
             }
           },
           shape: StadiumBorder(side: BorderSide()),
