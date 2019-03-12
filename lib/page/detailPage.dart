@@ -4,7 +4,6 @@
 
 import 'package:flutter/material.dart';
 import '../model/model.dart';
-import '../utility/tool.dart';
 import '../utility/global.dart';
 import '../view/selectMenu.dart';
 import '../utility/database.dart';
@@ -219,8 +218,10 @@ class _DetailPageState extends State<DetailPage> {
                     Model(_typeStr, _accountStr, _urlStr, _pwdStr, _descStr);
                 ///先删除再保存(不用update);
                 var deleteResult = await DBProvider.db.deleteData(widget.data.id);
-                var AddResult = await DBProvider.db.newData(data);
-                if (AddResult > 0) {
+                print('deleteResult = $deleteResult');
+                var addResult = await DBProvider.db.newData(data);
+                print('addResult = $addResult');
+                if (addResult > 0) {
                   print('success');
                   showDialog(
                       context: context,

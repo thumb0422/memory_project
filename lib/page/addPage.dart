@@ -35,6 +35,10 @@ class _AddPageState extends State<AddPage> {
                 height: 20,
               ),
               _buildTypeView(context),
+              Divider(
+                height: 1,
+                color: Colors.black,
+              ),
               _buildUrlView(context),
               _buildAccountView(context),
               _buildPwdView(context),
