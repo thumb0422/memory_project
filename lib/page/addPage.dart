@@ -81,8 +81,8 @@ class _AddPageState extends State<AddPage> {
             width: 10,
           ),
           SelectMenu(
-//              selectedValue: TypeModel('0001', '理财', 'licai.png'),
             onChanged: _onChanged,
+//            selectedIndex: 0,
           )
         ],
       ),

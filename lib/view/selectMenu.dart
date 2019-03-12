@@ -7,8 +7,8 @@ import '../utility/global.dart';
 
 class SelectMenu extends StatefulWidget {
   final ValueChanged<TypeModel> onChanged;
-  final TypeModel selectedValue;
-  SelectMenu({Key key, this.selectedValue, @required this.onChanged})
+  final int selectedIndex;
+  SelectMenu({Key key, this.selectedIndex, @required this.onChanged})
       : super(key: key);
 
   @override
@@ -35,7 +35,7 @@ class _SelectMenuState extends State<SelectMenu> {
       );
       items.add(dropdownMenuItem1);
     });
-    this.value = widget.selectedValue;
+    this.value = widget.selectedIndex == null ? null : MyGlobal().typeList[widget.selectedIndex];
     if (null==this.value || null==this.value.name){
       this.defaultDisplay = '类型选择';
     }else {
