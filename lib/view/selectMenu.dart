@@ -18,7 +18,6 @@ class SelectMenu extends StatefulWidget {
 }
 
 class _SelectMenuState extends State<SelectMenu> {
-
   TypeModel value;
 
   String defaultDisplay;
@@ -35,10 +34,12 @@ class _SelectMenuState extends State<SelectMenu> {
       );
       items.add(dropdownMenuItem1);
     });
-    this.value = widget.selectedIndex == null ? null : MyGlobal().typeList[widget.selectedIndex];
-    if (null==this.value || null==this.value.name){
+    this.value = (widget.selectedIndex == null || widget.selectedIndex < 0)
+        ? null
+        : MyGlobal().typeList[widget.selectedIndex];
+    if (null == this.value || null == this.value.name) {
       this.defaultDisplay = '类型选择';
-    }else {
+    } else {
       this.defaultDisplay = this.value.name;
     }
     print(defaultDisplay);
