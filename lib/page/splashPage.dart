@@ -8,13 +8,42 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:fluro/fluro.dart';
+import '../route/application.dart';
+import '../route/routes.dart';
+import '../route/routeDefine.dart';
+
 class SplashPage extends StatelessWidget {
+  SplashPage() {
+    initRoutes();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey,
         body: Center(
-          child: Text('splashPage',style: TextStyle(color: Colors.red,fontSize: 25),),
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 100,
+              ),
+              Text(
+                'splashPage',
+                style: TextStyle(color: Colors.red, fontSize: 40),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              RaisedButton(
+                  child: Text('Skip', style: TextStyle(color: Colors.yellow, fontSize: 25)),
+                  color: Colors.red,
+                  onPressed: () {
+                    Application.router.navigateTo(context, Routes.home,
+                        transition: TransitionType.inFromBottom);
+                  })
+            ],
+          ),
         ));
   }
 }
