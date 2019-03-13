@@ -10,6 +10,8 @@ import '../page/listPage.dart';
 import '../utility/tool.dart';
 import '../utility/global.dart';
 
+//import '../route/routeDefine.dart';
+
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
   @override
@@ -18,6 +20,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Future _future;
+  _HomePageState(){
+//    initRoutes();
+  }
 
   @override
   void initState() {
@@ -72,6 +77,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => AddPage()));
+//          Application.router.navigateTo(context, Routes.add, transition: TransitionType.inFromBottom);
 //          Navigator.push(
 //              context, MaterialPageRoute(builder: (context) => LoginPage()));
         },
