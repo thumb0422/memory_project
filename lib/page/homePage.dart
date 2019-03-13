@@ -10,6 +10,9 @@ import '../page/listPage.dart';
 import '../utility/tool.dart';
 import '../utility/global.dart';
 
+//import 'package:fluro/fluro.dart';
+//import '../route/application.dart';
+//import '../route/routes.dart';
 //import '../route/routeDefine.dart';
 
 class HomePage extends StatefulWidget {
